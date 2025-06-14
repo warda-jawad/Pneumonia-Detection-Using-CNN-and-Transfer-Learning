@@ -37,7 +37,7 @@ local_css("style.css")
 @st.cache_resource
 def load_pneumonia_model():
     try:
-        model = load_model('pneumonia_model.h5')
+        model = load_model('pneumonia_model.keras')
         return model
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")
