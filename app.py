@@ -18,6 +18,9 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 from PIL import Image
 import os
 
+if 'sample_image' in st.session_state:
+    del st.session_state['sample_image']  # Clean up leftover session state
+    
 # Set page config
 st.set_page_config(
     page_title="Pneumonia Detection from Chest X-rays",
