@@ -159,7 +159,47 @@ if uploaded_file is not None:
                 # Show processed image (for debugging)
                 # st.image(processed_img, caption="Processed Image", use_column_width=True)
 
+# Delete this entire section:
+st.subheader("Try with Sample Images")
+sample_col1, sample_col2, sample_col3 = st.columns(3)
 
+with sample_col1:
+    if st.button("Normal Sample"):
+        st.session_state.sample_image = "sample_normal.jpeg"
+
+with sample_col2:
+    if st.button("Pneumonia Sample (Bacterial)"):
+        st.session_state.sample_image = "sample_pneumonia_bacterial.jpeg"
+
+with sample_col3:
+    if st.button("Pneumonia Sample (Viral)"):
+        st.session_state.sample_image = "sample_pneumonia_viral.jpeg"
+# Delete this entire section:
+if hasattr(st.session_state, 'sample_image'):
+    sample_path = os.path.join("sample_images", st.session_state.sample_image)
+    try:
+        sample_image = Image.open(sample_path)
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.subheader("Sample Image")
+            st.image(sample_image, caption=st.session_state.sample_image, use_column_width=True)
+
+        with col2:
+            st.subheader("Analysis Results")
+            result, color, confidence, _ = predict_pneumonia(sample_image)
+
+            if result:
+                st.markdown(f"""
+                <div style='border: 2px solid {color}; border-radius: 5px; padding: 10px; margin: 10px 0;'>
+                    <h3 style='color: {color};'>Result: {result}</h3>
+                    <p>Confidence: <b>{confidence:.2f}%</b></p>
+                </div>
+                """, unsafe_allow_html=True)
+
+    except Exception as e:
+        st.error(f"Error loading sample image: {str(e)}")       
 # Footer
 st.markdown("---")
 st.markdown("""
