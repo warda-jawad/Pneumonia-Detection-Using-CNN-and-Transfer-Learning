@@ -72,9 +72,13 @@ with st.sidebar:
 # File uploader
 uploaded_file = st.file_uploader("Choose a chest X-ray image...", type=["jpg", "jpeg", "png"])
 
-# Prediction function
-def predict_pneumonia(image):
+# Prediction functiondef 
+predict_pneumonia(image):
     try:
+        # Convert to RGB if grayscale (1-channel)
+        if image.mode != 'RGB':
+            image = image.convert('RGB')
+            
         # Preprocess the image
         img = image.resize((128, 128))  # Match model's expected sizing
         img_array = img_to_array(img)
@@ -84,7 +88,7 @@ def predict_pneumonia(image):
         # Make prediction
         prediction = model.predict(img_array)
         confidence = float(prediction[0][0])
-
+        
         # Determine result
         if confidence > 0.5:
             result = "Pneumonia Detected"
@@ -94,9 +98,9 @@ def predict_pneumonia(image):
             result = "Normal (No Pneumonia)"
             color = "green"
             confidence_percent = (1 - confidence) * 100
-
+            
         return result, color, confidence_percent, img
-
+    
     except Exception as e:
         st.error(f"Error processing image: {str(e)}")
         return None, None, None, None
