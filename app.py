@@ -161,15 +161,15 @@ sample_col1, sample_col2, sample_col3 = st.columns(3)
 
 with sample_col1:
     if st.button("Normal Sample"):
-        st.session_state.sample_image = "sample_normal.jpg"
+        st.session_state.sample_image = "sample_normal.jpeg"
 
 with sample_col2:
     if st.button("Pneumonia Sample (Bacterial)"):
-        st.session_state.sample_image = "sample_pneumonia_bacterial.jpg"
+        st.session_state.sample_image = "sample_pneumonia_bacterial.jpeg"
 
 with sample_col3:
     if st.button("Pneumonia Sample (Viral)"):
-        st.session_state.sample_image = "sample_pneumonia_viral.jpg"
+        st.session_state.sample_image = "sample_pneumonia_viral.jpeg"
 
 # Handle sample image selection
 if hasattr(st.session_state, 'sample_image'):
