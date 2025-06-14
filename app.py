@@ -72,8 +72,8 @@ with st.sidebar:
 # File uploader
 uploaded_file = st.file_uploader("Choose a chest X-ray image...", type=["jpg", "jpeg", "png"])
 
-# Prediction functiondef 
-predict_pneumonia(image):
+# Prediction function  
+def predict_pneumonia(image):
     try:
         # Convert to RGB if grayscale (1-channel)
         if image.mode != 'RGB':
