@@ -54,7 +54,7 @@ Upload a chest X-ray image (in JPG or PNG format) for analysis.
 
 # Sidebar
 with st.sidebar:
-    st.image("https://www.researchgate.net/publication/334749053/figure/fig1/AS:784409535803392@1563991836585/Example-of-chest-X-ray-images-in-our-dataset-Normal-vs-Pneumonia.png",
+    st.image("https://news.northwestern.edu/assets/Stories/2021/01/Covid-19-pneumonia__FitMaxWzk3MCw2NTBd.jpg",
              width=200)
     st.markdown("""
     ### How it works
@@ -135,14 +135,14 @@ if uploaded_file is not None:
                 </div>
                 """, unsafe_allow_html=True)
 
-                # Show probability distribution
-                fig, ax = plt.subplots(figsize=(6, 2))
-                ax.barh(['Normal', 'Pneumonia'],
-                        [100-confidence, confidence],
-                        color=['green', 'red'])
-                ax.set_xlim(0, 100)
-                ax.set_title('Probability Distribution')
-                st.pyplot(fig)
+                # # Show probability distribution
+                # fig, ax = plt.subplots(figsize=(6, 2))
+                # ax.barh(['Normal', 'Pneumonia'],
+                #         [100-confidence, confidence],
+                #         color=['green', 'red'])
+                # ax.set_xlim(0, 100)
+                # ax.set_title('Probability Distribution')
+                # st.pyplot(fig)
 
 
                 # Show processed image (for debugging)
