@@ -144,17 +144,6 @@ if uploaded_file is not None:
                 ax.set_title('Probability Distribution')
                 st.pyplot(fig)
 
-                # Interpretation
-                if "Pneumonia" in result:
-                    st.error("""
-                    **Clinical Note:** This result suggests possible pneumonia.
-                    Please consult a radiologist for confirmation and further evaluation.
-                    """)
-                else:
-                    st.success("""
-                    **Clinical Note:** No signs of pneumonia detected.
-                    However, always consult a doctor if symptoms persist.
-                    """)
 
                 # Show processed image (for debugging)
                 # st.image(processed_img, caption="Processed Image", use_column_width=True)
